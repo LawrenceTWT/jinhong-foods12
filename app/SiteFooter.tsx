@@ -3,8 +3,8 @@ export default function SiteFooter() {
     <footer className="site-footer" id="contact">
       <div className="site-container footer-grid">
         <div className="footer-brand">
-          <span className="brand-mark brand-mark-footer">弘鼎</span>
-          <h2>弘鼎食品股份有限公司</h2>
+          <span className="brand-mark brand-mark-footer">金虹</span>
+          <h2>金虹食品股份有限公司</h2>
           <p>提供食品加工設備資訊與選型諮詢，讓每一次採購都有清楚可靠的判斷依據。</p>
         </div>
         <div className="footer-block">
@@ -28,7 +28,7 @@ export default function SiteFooter() {
         </div>
       </div>
       <div className="site-container footer-bottom">
-        <span>© 2026 弘鼎食品股份有限公司 All rights reserved.</span>
+        <span>© 2026 金虹食品股份有限公司 All rights reserved.</span>
         <a href="#top">回到頂端 ↑</a>
       </div>
     </footer>

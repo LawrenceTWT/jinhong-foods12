@@ -1453,27 +1453,150 @@ a {
 .service-copy > p {
   max-width: 530px;
   margin: 0;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 14px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 16px;
   line-height: 1.9;
 }
 
-.service-regions {
-  margin: 27px 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+.service-coverage-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.045)),
+    rgba(10, 39, 32, 0.58);
+  border-radius: 18px;
+  box-shadow: 0 28px 70px rgba(1, 18, 14, 0.28);
+  backdrop-filter: blur(12px);
 }
 
-.service-regions span {
-  padding: 7px 13px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.07);
+.service-coverage-header {
+  min-height: 98px;
+  padding: 23px 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.service-coverage-header div {
+  display: grid;
+  gap: 6px;
+}
+
+.service-coverage-header span {
+  color: #f3a47d;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+}
+
+.service-coverage-header h3 {
+  margin: 0;
+  font-size: clamp(20px, 2.2vw, 28px);
+  line-height: 1.25;
+}
+
+.service-coverage-header > strong {
+  padding: 8px 12px;
+  flex: 0 0 auto;
+  border: 1px solid rgba(243, 164, 125, 0.34);
+  background: rgba(232, 110, 47, 0.13);
   border-radius: 999px;
-  color: rgba(255, 255, 255, 0.9);
+  color: #ffc7a9;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+
+.service-coverage-body {
+  min-height: 490px;
+  padding: 26px;
+  display: grid;
+  grid-template-columns: minmax(220px, 1.05fr) minmax(185px, 0.95fr);
+  gap: clamp(22px, 3vw, 36px);
+  align-items: center;
+}
+
+.taiwan-map-wrap {
+  min-width: 0;
+  display: grid;
+  justify-items: center;
+  gap: 15px;
+}
+
+.taiwan-service-map {
+  width: min(100%, 310px);
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.2));
+}
+
+.map-coverage-key {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.7);
   font-size: 11px;
+  font-weight: 700;
+}
+
+.map-coverage-key span {
+  width: 10px;
+  height: 10px;
+  background: #ec783f;
+  border: 1px solid #ffd1b9;
+  border-radius: 3px;
+  box-shadow: 0 0 0 3px rgba(232, 110, 47, 0.12);
+}
+
+.service-region-list {
+  display: grid;
+  gap: 10px;
+}
+
+.service-region-list > div {
+  min-height: 63px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+}
+
+.service-region-list > div > span {
+  color: #f3a47d;
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.08em;
+}
+
+.service-region-list p {
+  margin: 0;
+}
+
+.service-region-list > div p {
+  display: grid;
+  gap: 3px;
+}
+
+.service-region-list strong {
+  font-size: 15px;
+}
+
+.service-region-list small {
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 11px;
+}
+
+.service-region-note {
+  padding: 4px 3px 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 11px;
+  line-height: 1.65;
 }
 
 .service-pricing {
@@ -1511,12 +1634,12 @@ a {
 }
 
 .service-pricing strong {
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .service-pricing small {
-  color: rgba(255, 255, 255, 0.62);
-  font-size: 10px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
   line-height: 1.65;
 }
 
@@ -1527,10 +1650,17 @@ a {
   gap: 18px;
 }
 
+/* 聯絡技術服務按鈕保持單行 */
+.service-actions .button {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  gap: 14px;
+}
+
 .service-actions > small {
-  max-width: 250px;
-  color: rgba(255, 255, 255, 0.55);
-  font-size: 9px;
+  max-width: 280px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 12px;
   line-height: 1.6;
 }
 
@@ -1539,6 +1669,24 @@ a {
   grid-template-columns: minmax(0, 1.12fr) minmax(220px, 0.88fr);
   grid-template-rows: repeat(3, minmax(0, 1fr));
   gap: 14px;
+}
+
+.service-gallery-wide {
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: auto;
+  margin-top: 8px;
+}
+
+.service-gallery-wide .service-case,
+.service-gallery-wide .service-case.featured {
+  grid-row: auto;
+}
+
+.service-gallery-wide .service-photo {
+  min-height: 0;
+  aspect-ratio: 3 / 4;
+  padding: 0;
 }
 
 .service-case {
@@ -1573,10 +1721,24 @@ a {
   min-height: 150px;
 }
 
+.service-gallery-wide .service-case:not(.featured) {
+  display: block;
+}
+
+.service-gallery-wide .service-case:not(.featured) .service-photo {
+  min-height: 0;
+  aspect-ratio: 3 / 4;
+}
+
 .service-photo img {
   width: 100%;
   height: 100%;
   display: block;
+  object-fit: contain;
+  object-position: center;
+}
+
+.service-gallery-wide .service-photo img {
   object-fit: contain;
   object-position: center;
 }
@@ -1592,12 +1754,12 @@ a {
 
 .service-case figcaption strong {
   color: var(--forest-dark);
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .service-case figcaption span {
   color: var(--muted);
-  font-size: 9px;
+  font-size: 13px;
   line-height: 1.65;
 }
 
@@ -3047,8 +3209,21 @@ a {
     max-width: 690px;
   }
 
+  .service-coverage-card {
+    width: 100%;
+  }
+
+  .service-coverage-body {
+    min-height: 460px;
+  }
+
   .service-gallery {
     max-width: 760px;
+  }
+
+  .service-gallery-wide {
+    max-width: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .map-frame,
@@ -3204,6 +3379,40 @@ a {
     font-size: clamp(34px, 10vw, 45px);
   }
 
+  .service-coverage-header {
+    min-height: 0;
+    padding: 20px;
+    align-items: flex-start;
+  }
+
+  .service-coverage-header > strong {
+    margin-top: 2px;
+  }
+
+  .service-coverage-body {
+    min-height: 0;
+    padding: 22px 20px 24px;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .taiwan-service-map {
+    width: min(100%, 280px);
+    height: auto;
+  }
+
+  .service-region-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .service-region-list > div {
+    min-width: 0;
+  }
+
+  .service-region-note {
+    grid-column: 1 / -1;
+  }
+
   .service-actions {
     align-items: flex-start;
     flex-direction: column;
@@ -3212,6 +3421,10 @@ a {
   .service-gallery {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
+  }
+
+  .service-gallery-wide .service-photo {
+    aspect-ratio: 3 / 4;
   }
 
   .service-case.featured {
@@ -3383,4 +3596,46 @@ a {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
   }
+}
+/* 放大所有產品頁的規格文字 */
+
+/* 目前型號小標題 */
+.model-selector-card label span {
+  font-size: 13px;
+}
+
+/* HTF-120 型號 */
+.model-selector-card label strong {
+  font-size: 22px;
+}
+
+/* 單一規格 */
+.single-model-badge {
+  font-size: 14px;
+}
+
+/* 上方三格：設備形式、適用範圍、規格確認 */
+.selected-spec-grid span {
+  font-size: 13px;
+}
+
+/* 上方三格的內容 */
+.selected-spec-grid strong {
+  font-size: 16px;
+}
+
+/* 下方規格表格 */
+.comparison-table th,
+.comparison-table td {
+  font-size: 15px;
+}
+
+/* 表格最上方標題 */
+.comparison-table thead th {
+  font-size: 15px;
+}
+
+/* 表格下方備註 */
+.specification-note {
+  font-size: 14px;
 }

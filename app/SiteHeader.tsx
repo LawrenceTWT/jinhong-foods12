@@ -100,11 +100,11 @@ export default function SiteHeader({
 
       <header className="site-header">
         <div className="site-container header-inner">
-          <Link className="brand" href="/" aria-label="弘鼎食品股份有限公司首頁">
-            <span className="brand-mark">弘鼎</span>
+          <Link className="brand" href="/" aria-label="金虹食品股份有限公司首頁">
+            <span className="brand-mark">金虹</span>
             <span className="brand-copy">
-              <strong>弘鼎食品股份有限公司</strong>
-              <small>HONG DING FOOD CO., LTD.</small>
+              <strong>金虹食品股份有限公司</strong>
+              <small>JIN HONG FOOD CO., LTD.</small>
             </span>
           </Link>
 

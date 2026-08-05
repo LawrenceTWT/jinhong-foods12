@@ -118,7 +118,7 @@ export default function ModelSpecificationPanel({
       </div>
 
       <p className="specification-note">
-        實際電壓、產能、機器配置與選配內容，請以弘鼎最終確認資料為準。
+        實際電壓、產能、機器配置與選配內容，請以金虹最終確認資料為準。
       </p>
     </section>
   );

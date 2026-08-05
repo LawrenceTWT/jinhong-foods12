@@ -6,6 +6,7 @@ import ProductImageLightbox from "./ProductImageLightbox";
 import { saveInquiryIds, useInquiryIds } from "./inquiryStorage";
 import SiteFooter from "./SiteFooter";
 import SiteHeader from "./SiteHeader";
+import TaiwanServiceMap from "./TaiwanServiceMap";
 import { categoryOptions, Product, products } from "./products";
 
 const serviceCases = [
@@ -318,13 +319,6 @@ export default function Home() {
               協助設備維持穩定運作。
             </p>
 
-            <div className="service-regions" aria-label="到府服務地區">
-              <span>台中</span>
-              <span>苗栗</span>
-              <span>新竹</span>
-              <span>彰化</span>
-            </div>
-
             <div className="service-pricing">
               <div>
                 <span aria-hidden="true">✓</span>
@@ -350,7 +344,9 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="service-gallery" aria-label="弘鼎現場服務實績">
+          <TaiwanServiceMap />
+
+          <div className="service-gallery service-gallery-wide" aria-label="弘鼎現場服務實績">
             {serviceCases.map((item) => (
               <figure className={item.featured ? "service-case featured" : "service-case"} key={item.label}>
                 <div className="service-photo">
@@ -487,7 +483,7 @@ export default function Home() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  使用 LINE 傳送詢價內容
+                  使用 LINE 先加好友
                 </a>
                 <a className="phone-inquiry" href="tel:0909140519">
                   或直接撥打 0909-140-519

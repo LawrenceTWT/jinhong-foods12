@@ -992,7 +992,7 @@ export const getProductVariants = (product: Product): ModelVariant[] => {
           : {
               設備形式: product.scale === "compact" ? "精巧型" : product.scale === "large" ? "落地型" : "標準型",
               適用範圍: product.applications.join("、"),
-              規格確認: "電壓、產能與選配內容請洽弘鼎確認",
+              規格確認: "電壓、產能與選配內容請洽金虹確認",
             },
     },
   ];
