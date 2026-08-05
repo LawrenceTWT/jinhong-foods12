@@ -108,11 +108,7 @@ export default function Home() {
     setNotice(`已將「${product.name}」加入詢價清單`);
   };
 
-  const lineMessage = encodeURIComponent(
-    `您好，我想詢問以下設備：\n${inquiryProducts
-      .map((product, index) => `${index + 1}. ${product.name}（${product.models}）`)
-      .join("\n")}\n\n想請您提供規格與報價，謝謝。`,
-  );
+  
 
   return (
     <main>
@@ -479,11 +475,11 @@ export default function Home() {
                 </div>
                 <a
                   className="line-inquiry"
-                  href={`https://line.me/R/share?text=${lineMessage}`}
+                  href="https://line.me/ti/p/~0907406307"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  使用 LINE 先加好友
+                  使用 LINE 詢價
                 </a>
                 <a className="phone-inquiry" href="tel:0909140519">
                   或直接撥打 0909-140-519
