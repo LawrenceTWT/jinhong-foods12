@@ -15,9 +15,10 @@ export default function HeroTextReveal() {
           text={titleFirstLine}
           as="span"
           splitBy="characters"
-          staggerDelay={0.055}
-          duration={0.65}
-          startDelay={0.18}
+          staggerDelay={0.08}
+          duration={0.85}
+          startDelay={0}
+          activationDelay={0.7}
           once
           className="hero-reveal-line"
         />
@@ -27,9 +28,10 @@ export default function HeroTextReveal() {
             text={titleSecondLine}
             as="span"
             splitBy="characters"
-            staggerDelay={0.055}
-            duration={0.65}
-            startDelay={0.62}
+            staggerDelay={0.08}
+            duration={0.85}
+            startDelay={0.75}
+            activationDelay={0.7}
             once
             className="hero-reveal-line"
           />
@@ -39,9 +41,10 @@ export default function HeroTextReveal() {
         text={description}
         as="p"
         splitBy="characters"
-        staggerDelay={0.018}
-        duration={0.48}
-        startDelay={1.05}
+        staggerDelay={0.024}
+        duration={0.6}
+        startDelay={1.55}
+        activationDelay={0.7}
         once
       />
     </>
