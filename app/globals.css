@@ -789,11 +789,6 @@ a {
   right: -4px;
 }
 
-.hero-card-bottom {
-  bottom: 38px;
-  left: 2px;
-}
-
 .product-area {
   padding: 100px 0 110px;
   background: var(--white);
@@ -3413,11 +3408,6 @@ a {
   .hero-card-top {
     top: 50px;
     right: 0;
-  }
-
-  .hero-card-bottom {
-    bottom: 24px;
-    left: 0;
   }
 
   .product-area {

@@ -214,10 +214,6 @@ export default function Home() {
               <small>加工流程</small>
               <strong>分切・處理・包裝</strong>
             </div>
-            <div className="hero-card hero-card-bottom">
-              <small>產品選擇</small>
-              <strong>{products.length} 款食品加工設備</strong>
-            </div>
           </div>
         </div>
       </section>
