@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useInquiryIds } from "./inquiryStorage";
@@ -101,7 +102,15 @@ export default function SiteHeader({
       <header className="site-header">
         <div className="site-container header-inner">
           <Link className="brand" href="/" aria-label="金虹食品股份有限公司首頁">
-            <span className="brand-mark">金虹</span>
+            <Image className="brand-logo"
+                   src="/brand-logo.png"
+                   alt="金虹食品品牌標誌"
+                   width={1000}
+                   height={785}
+                   priority
+                   unoptimized
+            />
+
             <span className="brand-copy">
               <strong>金虹食品股份有限公司</strong>
               <small>JIN HONG FOOD CO., LTD.</small>

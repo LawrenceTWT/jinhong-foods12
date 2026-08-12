@@ -130,7 +130,7 @@ export default function Home() {
             </h1>
             <p>
               從肉品鋸切、切片與絞肉，到真空包裝、充填成型和蔬果處理，
-              弘鼎協助您依產能、空間與製程找到合適設備。
+              金虹協助您依產能、空間與製程找到合適設備。
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href="#products">
@@ -311,7 +311,7 @@ export default function Home() {
               現場服務也能找得到人
             </h2>
             <p>
-              弘鼎提供食品機械到府安裝、操作教學、定期保養、故障維修與零件更換，
+              金虹提供食品機械到府安裝、操作教學、定期保養、故障維修與零件更換，
               協助設備維持穩定運作。
             </p>
 
@@ -342,7 +342,7 @@ export default function Home() {
 
           <TaiwanServiceMap />
 
-          <div className="service-gallery service-gallery-wide" aria-label="弘鼎現場服務實績">
+          <div className="service-gallery service-gallery-wide" aria-label="金虹現場服務實績">
             {serviceCases.map((item) => (
               <figure className={item.featured ? "service-case featured" : "service-case"} key={item.label}>
                 <div className="service-photo">
@@ -377,7 +377,7 @@ export default function Home() {
             <div className="map-address">
               <span aria-hidden="true">⌖</span>
               <div>
-                <small>弘鼎食品股份有限公司</small>
+                <small>金虹食品股份有限公司</small>
                 <strong>台中市大雅區中清路四段93-18號</strong>
               </div>
             </div>
@@ -392,7 +392,7 @@ export default function Home() {
           </div>
           <div className="map-frame">
             <iframe
-              title="弘鼎食品股份有限公司 Google 地圖"
+              title="金虹食品股份有限公司 Google 地圖"
               src="https://www.google.com/maps?q=台中市大雅區中清路四段93-18號&hl=zh-TW&z=16&output=embed"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

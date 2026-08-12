@@ -1,9 +1,18 @@
+import Image from 'next/image';
+
 export default function SiteFooter() {
   return (
     <footer className="site-footer" id="contact">
       <div className="site-container footer-grid">
         <div className="footer-brand">
-          <span className="brand-mark brand-mark-footer">金虹</span>
+          <Image
+            className="brand-logo-footer"
+            src="/brand-logo.png"
+            alt="金虹食品品牌標誌"
+            width={1000}
+            height={785}
+            unoptimized
+          />
           <h2>金虹食品股份有限公司</h2>
           <p>提供食品加工設備資訊與選型諮詢，讓每一次採購都有清楚可靠的判斷依據。</p>
         </div>
