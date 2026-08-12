@@ -1,7 +1,11 @@
 "use client";
 
 import * as React from "react";
-import { motion, useInView, useReducedMotion } from "motion/react";
+
+type RevealUnitStyle = React.CSSProperties & {
+  "--text-reveal-delay": string;
+  "--text-reveal-duration": string;
+};
 
 export interface TextRevealProps {
   /** The text to animate. */
@@ -35,15 +39,28 @@ export function TextReveal({
   className,
 }: TextRevealProps) {
   const ref = React.useRef<HTMLElement>(null);
-  const isInView = useInView(ref, { once, amount: threshold });
-  const shouldReduceMotion = useReducedMotion();
-  const [fallbackInView, setFallbackInView] = React.useState(false);
+  const [isInView, setIsInView] = React.useState(false);
 
   React.useEffect(() => {
-    if (typeof window.IntersectionObserver !== "undefined") return;
-    const frame = window.requestAnimationFrame(() => setFallbackInView(true));
-    return () => window.cancelAnimationFrame(frame);
-  }, []);
+    const element = ref.current;
+    if (!element) return;
+
+    if (typeof window.IntersectionObserver === "undefined") {
+      const frame = window.requestAnimationFrame(() => setIsInView(true));
+      return () => window.cancelAnimationFrame(frame);
+    }
+
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+        if (entry.isIntersecting && once) observer.disconnect();
+      },
+      { threshold },
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [once, threshold]);
 
   const units =
     splitBy === "words"
@@ -54,29 +71,27 @@ export function TextReveal({
           )
       : Array.from(text);
   const AnyTag = Tag as React.ElementType;
-  const revealed = isInView || fallbackInView || shouldReduceMotion;
 
   return (
-    <AnyTag ref={ref} className={className} aria-label={text}>
+    <AnyTag
+      ref={ref}
+      className={`text-reveal${isInView ? " is-visible" : ""}${className ? ` ${className}` : ""}`}
+      aria-label={text}
+    >
       {units.map((unit, index) => (
-        <motion.span
+        <span
           aria-hidden="true"
+          className="text-reveal-unit"
           key={`${unit}-${index}`}
-          initial={{ opacity: 0.08, filter: "blur(9px)", y: "0.28em" }}
-          animate={
-            revealed
-              ? { opacity: 1, filter: "blur(0px)", y: 0 }
-              : { opacity: 0.08, filter: "blur(9px)", y: "0.28em" }
+          style={
+            {
+              "--text-reveal-delay": `${startDelay + index * staggerDelay}s`,
+              "--text-reveal-duration": `${duration}s`,
+            } as RevealUnitStyle
           }
-          transition={{
-            duration: shouldReduceMotion ? 0 : duration,
-            delay: shouldReduceMotion ? 0 : startDelay + index * staggerDelay,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          style={{ display: "inline-block", willChange: "opacity, filter, transform" }}
         >
           {unit === " " ? "\u00a0" : unit}
-        </motion.span>
+        </span>
       ))}
     </AnyTag>
   );

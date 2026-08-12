@@ -543,6 +543,27 @@ a {
   white-space: nowrap;
 }
 
+.text-reveal-unit {
+  display: inline-block;
+  opacity: 0.08;
+  filter: blur(9px);
+  transform: translateY(0.28em);
+  will-change: opacity, filter, transform;
+}
+
+.text-reveal.is-visible .text-reveal-unit {
+  animation: text-reveal-in var(--text-reveal-duration) cubic-bezier(0.22, 1, 0.36, 1)
+    var(--text-reveal-delay) forwards;
+}
+
+@keyframes text-reveal-in {
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
 .hero-copy > p {
   max-width: 590px;
   margin: 0;
@@ -3632,6 +3653,12 @@ a {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  .text-reveal-unit {
+    opacity: 1;
+    filter: none;
+    transform: none;
   }
 
 }
