@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import HeroTextReveal from "./HeroTextReveal";
 import ProductImageLightbox from "./ProductImageLightbox";
 import { saveInquiryIds, useInquiryIds } from "./inquiryStorage";
 import SiteFooter from "./SiteFooter";
@@ -124,15 +125,7 @@ export default function Home() {
         <div className="hero-grid site-container">
           <div className="hero-copy">
             <span className="eyebrow">FOOD PROCESSING SOLUTIONS</span>
-            <h1>
-              讓每一道加工流程
-              <br />
-              <em>更穩定、更有效率</em>
-            </h1>
-            <p>
-              從肉品鋸切、切片與絞肉，到真空包裝、充填成型和蔬果處理，
-              金虹協助您依產能、空間與製程找到合適設備。
-            </p>
+            <HeroTextReveal />
             <div className="hero-actions">
               <a className="button button-primary" href="#products">
                 瀏覽全部產品 <span aria-hidden="true">→</span>
@@ -209,10 +202,6 @@ export default function Home() {
                   <strong>雙槽式機型</strong>
                 </span>
               </Link>
-            </div>
-            <div className="hero-card hero-card-top">
-              <small>加工流程</small>
-              <strong>分切・處理・包裝</strong>
             </div>
           </div>
         </div>
