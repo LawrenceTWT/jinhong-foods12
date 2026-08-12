@@ -20,6 +20,8 @@ export interface TextRevealProps {
   duration?: number;
   /** Delay before this reveal begins, in seconds. */
   startDelay?: number;
+  /** Wait after the page becomes visible before starting the reveal. */
+  activationDelay?: number;
   /** Percentage of the element that must be visible before revealing. */
   threshold?: number;
   /** Only run the reveal the first time it enters the viewport. */
@@ -34,6 +36,7 @@ export function TextReveal({
   staggerDelay = 0.05,
   duration = 0.5,
   startDelay = 0,
+  activationDelay = 0.7,
   threshold = 0.35,
   once = true,
   className,
@@ -45,22 +48,66 @@ export function TextReveal({
     const element = ref.current;
     if (!element) return;
 
+    let isIntersecting = false;
+    let revealTimer: number | undefined;
+
+    const clearRevealTimer = () => {
+      if (revealTimer !== undefined) {
+        window.clearTimeout(revealTimer);
+        revealTimer = undefined;
+      }
+    };
+
+    const scheduleReveal = () => {
+      clearRevealTimer();
+      if (!isIntersecting || document.visibilityState !== "visible") return;
+
+      revealTimer = window.setTimeout(() => {
+        setIsInView(true);
+      }, activationDelay * 1000);
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        scheduleReveal();
+      } else {
+        clearRevealTimer();
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
     if (typeof window.IntersectionObserver === "undefined") {
-      const frame = window.requestAnimationFrame(() => setIsInView(true));
-      return () => window.cancelAnimationFrame(frame);
+      isIntersecting = true;
+      scheduleReveal();
+      return () => {
+        document.removeEventListener("visibilitychange", handleVisibilityChange);
+        clearRevealTimer();
+      };
     }
 
     const observer = new window.IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting);
-        if (entry.isIntersecting && once) observer.disconnect();
+        isIntersecting = entry.isIntersecting;
+
+        if (entry.isIntersecting) {
+          scheduleReveal();
+          if (once) observer.disconnect();
+        } else {
+          clearRevealTimer();
+          if (!once) setIsInView(false);
+        }
       },
       { threshold },
     );
 
     observer.observe(element);
-    return () => observer.disconnect();
-  }, [once, threshold]);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      clearRevealTimer();
+    };
+  }, [activationDelay, once, threshold]);
 
   const units =
     splitBy === "words"
