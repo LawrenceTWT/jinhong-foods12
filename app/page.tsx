@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import ProductImageLightbox from "./ProductImageLightbox";
 import { saveInquiryIds, useInquiryIds } from "./inquiryStorage";
@@ -146,23 +147,76 @@ export default function Home() {
               <span>在地服務</span>
             </div>
           </div>
-          <div className="hero-visual" aria-hidden="true">
-            <div className="hero-orbit orbit-one" />
-            <div className="hero-orbit orbit-two" />
-            <div className="hero-machine">
-              <span className="hero-machine-top">HD</span>
-              <span className="hero-machine-screen" />
-              <span className="hero-machine-line" />
-              <span className="hero-machine-table" />
-              <span className="hero-machine-base" />
+          <div
+            className="hero-visual"
+            role="group"
+            aria-label="金虹食品三款代表性加工設備"
+          >
+            <div className="hero-orbit orbit-one" aria-hidden="true" />
+            <div className="hero-orbit orbit-two" aria-hidden="true" />
+            <div className="hero-product-stack">
+              <Link
+                className="hero-product hero-product-left"
+                href="/products/automatic-meat-slicer"
+                aria-label="查看全自動切片機 MST-350W"
+              >
+                <Image
+                  src="/products/automatic-meat-slicer.webp"
+                  alt="全自動切片機 MST-350W"
+                  width={900}
+                  height={900}
+                  priority
+                  unoptimized
+                />
+                <span className="hero-product-caption">
+                  <small>冷凍肉切片</small>
+                  <strong>MST-350W</strong>
+                </span>
+              </Link>
+              <Link
+                className="hero-product hero-product-center"
+                href="/products/high-speed-bone-saw"
+                aria-label="查看多功能肉類高速鋸骨機 HT-400"
+              >
+                <Image
+                  src="/products/ht-400.webp"
+                  alt="多功能肉類高速鋸骨機 HT-400"
+                  width={900}
+                  height={1200}
+                  priority
+                  unoptimized
+                />
+                <span className="hero-product-caption">
+                  <small>肉品鋸切</small>
+                  <strong>HT-400</strong>
+                </span>
+              </Link>
+              <Link
+                className="hero-product hero-product-right"
+                href="/products/double-chamber-vacuum-packing-machine"
+                aria-label="查看雙槽式真空包裝機"
+              >
+                <Image
+                  src="/products/double-chamber-vacuum-packing-machine.webp"
+                  alt="雙槽式真空包裝機"
+                  width={900}
+                  height={600}
+                  priority
+                  unoptimized
+                />
+                <span className="hero-product-caption">
+                  <small>真空包裝</small>
+                  <strong>雙槽式機型</strong>
+                </span>
+              </Link>
             </div>
             <div className="hero-card hero-card-top">
-              <small>設備材質</small>
-              <strong>食品級不鏽鋼</strong>
+              <small>加工流程</small>
+              <strong>分切・處理・包裝</strong>
             </div>
             <div className="hero-card hero-card-bottom">
-              <small>產品數量</small>
-              <strong>{products.length} 組加工設備</strong>
+              <small>產品選擇</small>
+              <strong>{products.length} 款食品加工設備</strong>
             </div>
           </div>
         </div>
