@@ -7,12 +7,13 @@
   },
   "scripts": {
     "install:ci": "bash scripts/install-ci.sh",
-     "dev": "vite",
-     "build": "vinext build",
-     "start": "vinext start",
-     "test": "npm run build && node --test tests/rendered-html.test.mjs",
-     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
-     "db:generate": "drizzle-kit generate"
+    "dev": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vite",
+    "build": "bash scripts/build-verified.sh",
+    "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
+    "test": "npm run build && node --test tests/rendered-html.test.mjs",
+    "validate:artifact": "bash scripts/validate-artifact.sh",
+    "lint": "bash scripts/sites-env.sh -- eslint . --ignore-pattern dist --ignore-pattern .next",
+    "db:generate": "bash scripts/sites-env.sh -- drizzle-kit generate"
   },
   "dependencies": {
     "drizzle-orm": "0.45.2",
@@ -39,5 +40,5 @@
     "wrangler": "4.92.0"
   },
   "type": "module",
-  "displayName": "\u5f18\u9f0e\u98df\u54c1\u80a1\u4efd\u6709\u9650\u516c\u53f8"
+  "displayName": "弘鼎食品股份有限公司"
 }
