@@ -545,9 +545,9 @@ a {
 
 .text-reveal-unit {
   display: inline-block;
-  opacity: 0.08;
-  filter: blur(9px);
-  transform: translateY(0.28em);
+  opacity: 0;
+  filter: blur(16px);
+  transform: translateY(0.42em) scale(0.985);
   will-change: opacity, filter, transform;
 }
 
