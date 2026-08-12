@@ -540,27 +540,7 @@ a {
 
 .hero-reveal-line {
   display: inline-block;
-}
-
-.hero-reveal-character {
-  display: inline-block;
-  opacity: 0;
-  filter: blur(10px);
-  transform: translateY(0.42em);
-  will-change: opacity, filter, transform;
-}
-
-.hero-reveal.is-visible .hero-reveal-character {
-  animation: hero-text-reveal var(--reveal-duration) cubic-bezier(0.22, 1, 0.36, 1)
-    var(--reveal-delay) forwards;
-}
-
-@keyframes hero-text-reveal {
-  to {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateY(0);
-  }
+  white-space: nowrap;
 }
 
 .hero-copy > p {
@@ -3654,11 +3634,6 @@ a {
     animation-iteration-count: 1 !important;
   }
 
-  .hero-reveal-character {
-    opacity: 1;
-    filter: none;
-    transform: none;
-  }
 }
 /* 放大所有產品頁的規格文字 */
 
