@@ -11,6 +11,23 @@ import SiteHeader from "./SiteHeader";
 import TaiwanServiceMap from "./TaiwanServiceMap";
 import { categoryOptions, Product, products } from "./products";
 
+const LINE_OFFICIAL_ACCOUNT_ID = "@453medfq";
+
+function buildLineInquiryUrl(inquiryProducts: Product[]) {
+  const productLines = inquiryProducts.map(
+    (product, index) => `${index + 1}. ${product.name}\n型號：${product.models}`,
+  );
+  const message = [
+    "您好，我想詢問以下食品加工設備：",
+    "",
+    ...productLines.flatMap((line) => [line, ""]),
+    `共 ${inquiryProducts.length} 項設備。`,
+    "想了解適用產能、規格、價格與交期，謝謝。",
+  ].join("\n");
+
+  return `https://line.me/R/oaMessage/${encodeURIComponent(LINE_OFFICIAL_ACCOUNT_ID)}/?${encodeURIComponent(message)}`;
+}
+
 const serviceCases = [
   {
     image: "/services/service-equipment-inspection.webp",
@@ -89,6 +106,11 @@ export default function Home() {
   const inquiryProducts = useMemo(
     () => products.filter((product) => inquiryIds.includes(product.id)),
     [inquiryIds],
+  );
+
+  const lineInquiryUrl = useMemo(
+    () => buildLineInquiryUrl(inquiryProducts),
+    [inquiryProducts],
   );
 
   const selectCategory = (categoryId: string) => {
@@ -512,13 +534,16 @@ export default function Home() {
                   <span>已選設備</span>
                   <strong>{inquiryProducts.length} 項</strong>
                 </div>
+                <p className="line-inquiry-note">
+                  點擊後會開啟金虹 LINE 官方帳號，並自動帶入上方設備與型號；請確認內容後按下傳送。
+                </p>
                 <a
                   className="line-inquiry"
-                  href="https://line.me/ti/p/~0907406307"
+                  href={lineInquiryUrl}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  使用 LINE 詢價
+                  帶入清單並使用 LINE 詢價
                 </a>
                 <a className="phone-inquiry" href="tel:0909140519">
                   或直接撥打 0909-140-519

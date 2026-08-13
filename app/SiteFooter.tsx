@@ -20,8 +20,8 @@ export default function SiteFooter() {
           <span>聯絡方式</span>
           <a href="tel:0909140519">電話｜0909-140-519</a>
           <a href="mailto:lucky911228@gmail.com">信箱｜lucky911228@gmail.com</a>
-          <a href="https://line.me/ti/p/~0907406307" target="_blank" rel="noreferrer">
-            LINE｜0907406307
+          <a href="https://line.me/R/ti/p/%40453medfq" target="_blank" rel="noreferrer">
+            LINE 官方帳號｜@453medfq
           </a>
         </div>
         <div className="footer-block">
