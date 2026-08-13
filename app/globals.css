@@ -2291,6 +2291,13 @@ a {
   font-size: 18px;
 }
 
+.line-inquiry-note {
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.65;
+}
+
 .line-inquiry,
 .phone-inquiry {
   min-height: 48px;
